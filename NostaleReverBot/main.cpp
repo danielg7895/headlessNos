@@ -16,7 +16,7 @@ void main() {
 		seed = generateSeed(0x989680);
 	}
 	
-	std::string loginPacket = login("geka600", "262sda26D");
+	std::string loginPacket = login("", "");
 	int len = loginPacket.length();
 	encrypt(loginPacket);
 
