@@ -126,10 +126,14 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="nostale_sockets.cpp" />
     <ClCompile Include="sha512.cpp" />
+    <ClCompile Include="NosCrypto.cpp" />
+    <ClCompile Include="Tools.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Tools.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="md5.h" />
+    <ClInclude Include="NosCrypto.h" />
     <ClInclude Include="sha512.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

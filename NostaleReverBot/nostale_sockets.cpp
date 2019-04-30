@@ -72,9 +72,6 @@ public:
 	}
 
 	 void NSend(const char* buff, int len) {
-		 for (int i = 0; i < len; i++) {
-			 printf("%.2X", (BYTE)buff[i]);
-		 }
 
 		 resultado = send(connection_socket, buff, len, 0);
 		 if (resultado == SOCKET_ERROR) {
