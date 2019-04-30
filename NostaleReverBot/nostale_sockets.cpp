@@ -25,7 +25,11 @@ public:
 	char recvBuff[RECVBUFF_LEN] = "";
 
 
-	 NostaleSocket (){
+	NostaleSocket() {
+	}
+
+
+	void test(const char* buff, int len) {
 		// inicializo winsock
 		WSADATA wsaData;
 		resultado = WSAStartup(MAKEWORD(2, 2), &wsaData);
@@ -63,10 +67,16 @@ public:
 			return;
 		}
 		printf("Coneccion con el server satisfactoria\n");
+
+		NSend(buff, len);
 	}
 
-	 void NSend(const char* buff) {
-		 resultado = send(connection_socket, buff, (int)strlen(buff), 0);
+	 void NSend(const char* buff, int len) {
+		 for (int i = 0; i < len; i++) {
+			 printf("%.2X", (BYTE)buff[i]);
+		 }
+
+		 resultado = send(connection_socket, buff, len, 0);
 		 if (resultado == SOCKET_ERROR) {
 			 printf("Falle al enviar el paquete, codigo error: %ld\n", WSAGetLastError());
 			 close_connection();
