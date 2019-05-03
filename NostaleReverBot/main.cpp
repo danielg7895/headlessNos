@@ -17,11 +17,7 @@ void main() {
 		seed = generateSeed(0x989680);
 	}
 	
-<<<<<<< HEAD
 	std::string loginPacket = login("user", "pass");
-=======
-	std::string loginPacket = login("", "");
->>>>>>> cb2a816973b327e2d576075cc7d7d56c82e609f6
 	int len = loginPacket.length();
 	login_encrypt(loginPacket);
 
