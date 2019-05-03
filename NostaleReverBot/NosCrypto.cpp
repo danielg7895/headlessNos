@@ -10,7 +10,7 @@ DWORD generateSeed(DWORD num) {
 	return edx;
 }
 
-std::string generateRandomNum(DWORD *seed) {
+std::string generateRandomNum(DWORD* seed) {
 	BYTE ecx = 0x0A;
 	BYTE resto = 0x00;
 	std::string strRandomBytes = "";
@@ -41,8 +41,9 @@ std::string generateRandomNum(DWORD *seed) {
 	return strRandomBytes; // devuelve en hex
 }
 
-std::string decrypt(std::string packet) {
-
+// ################################## LOGIN ENCRYPT/DECRYPT METHODS ##############################################
+std::string login_decrypt(std::string packet) {
+	// server to client login packets decryption.
 	for (int i = 0; i < packet.length(); ++i) {
 		packet[i] -= 0x0F;
 		if (packet[i] == 0x0A) {
@@ -55,31 +56,30 @@ std::string decrypt(std::string packet) {
 	return packet;
 }
 
-std::string decryptLoginServer(std::string packet) {
+std::string login_decrypt_server(std::string packet) {
+	// method used on server side to decrypt client packets.
 	for (int i = 0; i < packet.length(); ++i) {
 		packet[i] = (packet[i] - 0x0F) ^ 0xC3;
 	}
 	return packet;
 }
 
-char* decryptLoginServer(char* packet, int len) {
-	for (int i = 0; i < len; ++i) {
-		packet[i] = (packet[i] - 0x0F) ^ 0xC3;
-	}
-	return packet;
-}
-
-std::string encrypt(std::string & packet) {
-
+std::string login_encrypt(std::string & packet) {
+	// client to server packet encryption
 	for (int i = 0; i < packet.length(); ++i) {
 		packet[i] = (packet[i] ^ 0xC3) + 0x0F;
 	}
 	return packet;
 }
 
-char* encrypt(char* packet, int len) {
-	for (int i = 0; i < len; ++i) {
-		packet[i] = (packet[i] ^ 0xC3) + 0x0F;
-	}
-	return packet;
+
+
+
+// ################################## INGAME ENCRYPT/DECRYPT METHODS ##########################################
+std::string ingame_decrypt(std::string packet) {
+	return "";
+}
+
+std::string ingame_encrypt(std::string packet) {
+	return "";
 }

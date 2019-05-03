@@ -5,6 +5,7 @@
 #include "NosCrypto.h"
 
 std::string SERVER_IP = "79.110.84.75";
+
 std::string SERVER_PORT = "4005";
 
 void main() {
@@ -16,12 +17,12 @@ void main() {
 		seed = generateSeed(0x989680);
 	}
 	
-	std::string loginPacket = login("geka600", "262sda26D");
+	std::string loginPacket = login("user", "pass");
 	int len = loginPacket.length();
-	encrypt(loginPacket);
+	login_encrypt(loginPacket);
 
 	nostaleSocket.test(loginPacket.c_str(), len);
-	printf(decrypt(nostaleSocket.recvBuff).c_str());
+	printf(login_decrypt(nostaleSocket.recvBuff).c_str());
 	
 	
 	std::string resp2 = "].ctbc/sp}xt{vFGHD/A/D?D?B/FH=@@?=GC=FHIC?ADI?I@=E=Td<X}ux}x../FH=@@?=GC=FHIC?AEI?I@=F=Td<X}ux}x../A?E=ADB=@FD=GGIC?BCI?IB=D=cwtxp7P|t.xrp8/FH=@@?=GC=FHIC?ABI?I@=C=Td<X}ux}x../FH=@@?=GC=FHIC?AAI?I@=B=Td<X}ux}x../A?E=ADB=@FD=GGIC?BBI?IB=C=cwtxp7P|t.xrp8/FH=@@?=GC=FHIC?ACI?I@=D=Td<X}ux}x../A?E=ADB=@FD=GGIC?BAI?IB=B=cwtxp7P|t.xrp8/FH=@@?=GC=FHIC?A@I?I@=A=Td<X}ux}x../A?E=ADB=@FD=GGIC?B@I?IB=A=cwtxp7P|t.xrp8/A?E=ADB=@FD=GGIC?B?IBIB=@=cwtxp7P|t.xrp8/FH=@@?=GC=FHIC?A?ICI@=@=Td<X}ux}x../<@I<@I<@I@????=@????=C";
@@ -34,7 +35,7 @@ void main() {
 		whaaaa += (char)stoi(curr2, nullptr, 16);
 	}
 
-	whaaaa = decryptLoginServer(whaaaa);
+	whaaaa = login_decrypt_server(whaaaa);
 
 	//printf(whaaaa.c_str());
 
@@ -43,16 +44,13 @@ void main() {
 		std::string curr2 = original.substr(i, 2);
 		originalDecrypt += (char)stoi(curr2, nullptr, 16);
 	}
-	originalDecrypt = decryptLoginServer(originalDecrypt);
+	originalDecrypt = login_decrypt_server(originalDecrypt);
 
 	//printf(originalDecrypt.c_str());
 
 	
 	//printf(decryptLoginServer(send).c_str());
 }
-
-
-
 
 std::string login(std::string user, std::string password) {
 	MD5 md5;
@@ -71,7 +69,7 @@ std::string login(std::string user, std::string password) {
 
 	std::string passSHA512 = sha512(password);
 	std::string randomNum2 = int2hex_str((int)generateSeed(0x989680));
-	std::string gameVersion = "0.9.3.3102";
+	std::string gameVersion = "0.9.3.3103";
 	std::string bothMD5 = md5.digestString(md5_hash);
 	std::string packet;
 	packet += opcode;
@@ -87,4 +85,3 @@ std::string login(std::string user, std::string password) {
 
 	return packet;
 }
-

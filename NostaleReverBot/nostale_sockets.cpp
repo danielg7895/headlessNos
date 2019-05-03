@@ -70,7 +70,6 @@ public:
 
 		NSend(buff, len);
 	}
-
 	 void NSend(const char* buff, int len) {
 
 		 resultado = send(connection_socket, buff, len, 0);

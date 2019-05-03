@@ -76,9 +76,12 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\Daniel\source\repos\NostaleReverBot\NostaleReverBot\xHacking\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>C:\Users\Daniel\source\repos\NostaleReverBot\NostaleReverBot\xHacking\lib\xHacking.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -130,11 +133,15 @@
     <ClCompile Include="Tools.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Tools.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="md5.h" />
     <ClInclude Include="NosCrypto.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="sha512.h" />
+    <ClInclude Include="Tools.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="NostaleReverBot.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

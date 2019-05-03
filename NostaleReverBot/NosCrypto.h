@@ -2,11 +2,14 @@
 #include <string>
 #include <Windows.h>
 
-std::string decrypt(std::string packet);
-std::string encrypt(std::string& packet);
-char* encrypt(char* packet, int len);
-std::string decryptLoginServer(std::string packet);
-char* decryptLoginServer(char* packet, int len);
+// Login encrypt/decrypt methods
+std::string login_decrypt(std::string packet);
+std::string login_encrypt(std::string& packet);
+std::string login_decrypt_server(std::string packet);
+
+// Ingame encrypt/decrypt methods
+std::string ingame_decrypt(std::string packet);
+std::string ingame_encrypt(std::string packet);
 
 DWORD generateSeed(DWORD num);
 std::string generateRandomNum(DWORD* seed);
